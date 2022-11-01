@@ -1,5 +1,3 @@
-
-
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
 // в общее состояние и отображаться в списке + фильтроваться
@@ -10,9 +8,44 @@
 // Элементы <option></option> желательно сформировать на базе
 // данных из фильтров
 
+import { useState } from "react";
+import {useHttp} from "../../hooks/http.hook";
+import { v4 as uuidv4 } from 'uuid'
+import { useSelector, useDispatch } from "react-redux";
+import { heroCreated } from "../../actions";
+
 const HeroesAddForm = () => {
+    const [heroName, setHeroName] = useState('')
+    const [heroDescription, setHeroDescription] = useState('')
+    const [heroElement, setHeroElement] = useState('')
+
+    const {request} = useHttp()
+
+    const dispatch = useDispatch()
+
+    const onSubmitHandler = e => {
+        e.preventDefault()
+
+        const newHero = {
+            id: uuidv4(),
+            name: heroName,
+            description: heroDescription,
+            element: heroElement
+        }
+
+        request('http://localhost:3001/heroes', 'POST', JSON.stringify(newHero))
+          .then(res => console.log(res, 'Sending successful'))
+          .then(dispatch(heroCreated(newHero)))
+          .catch(error => console.log(error))
+
+        setHeroName('')
+        setHeroDescription('')
+        setHeroElement('')
+    }
+
     return (
-        <form className="border p-4 shadow-lg rounded">
+        <form className="border p-4 shadow-lg rounded"
+              onSubmit={onSubmitHandler}>
             <div className="mb-3">
                 <label
                   htmlFor="name"
@@ -23,7 +56,9 @@ const HeroesAddForm = () => {
                     name="name" 
                     className="form-control" 
                     id="name" 
-                    placeholder="Как меня зовут?"/>
+                    placeholder="Как меня зовут?"
+                    value={heroName}
+                    onChange={(e) => setHeroName(e.target.value)}/>
             </div>
 
             <div className="mb-3">
@@ -36,7 +71,9 @@ const HeroesAddForm = () => {
                     className="form-control" 
                     id="text" 
                     placeholder="Что я умею?"
-                    style={{"height": '130px'}}/>
+                    style={{"height": '130px'}}
+                    value={heroDescription}
+                    onChange={(e) => setHeroDescription(e.target.value)}/>
             </div>
 
             <div className="mb-3">
@@ -47,7 +84,9 @@ const HeroesAddForm = () => {
                     required
                     className="form-select" 
                     id="element" 
-                    name="element">
+                    name="element"
+                    value={heroElement}
+                    onChange={(e) => setHeroElement(e.target.value)}>
                     <option >Я владею элементом...</option>
                     <option value="fire">Огонь</option>
                     <option value="water">Вода</option>
