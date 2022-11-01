@@ -22,6 +22,18 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 heroesLoadingStatus: 'error'
             }
+        case 'HERO_CREATED':
+            const newCreatedHeroList = [...state.heroes, action.payload]
+            return {
+                ...state,
+                heroes: newCreatedHeroList
+            }
+        case 'HERO_DELETED':
+            const updatedHeroList = state.heroes.filter(item => item.id != action.payload)
+            return {
+                ...state,
+                heroes: updatedHeroList
+            }
         default: return state
     }
 }
