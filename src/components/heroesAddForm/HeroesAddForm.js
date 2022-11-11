@@ -9,9 +9,10 @@
 // данных из фильтров
 
 import { useState } from "react";
-import {useHttp} from "../../hooks/http.hook";
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from "react-redux";
+import {useHttp} from "../../hooks/http.hook";
+
 import { heroCreated } from "../../actions";
 
 const HeroesAddForm = () => {
@@ -20,7 +21,7 @@ const HeroesAddForm = () => {
     const [heroElement, setHeroElement] = useState('')
 
     const {request} = useHttp()
-
+    const { filters, filtersLoadingStatus } = useSelector(state => state)
     const dispatch = useDispatch()
 
     const onSubmitHandler = e => {
@@ -41,6 +42,22 @@ const HeroesAddForm = () => {
         setHeroName('')
         setHeroDescription('')
         setHeroElement('')
+    }
+
+    const renderFiltersOptions = (filters, status) => {
+        if (status === 'loading') {
+            return <option>Загрузка елементов</option>
+        } else if (status === 'error') {
+            return <option>Ошибка загрузки</option>
+        }
+
+        if (filters && filters.length > 0) {
+            return filters.map(({name, label}) => {
+                // eslint-disable-next-line
+                if (name === 'all') return
+                return <option key={name} value={name}>{label}</option>
+            })
+        }
     }
 
     return (
@@ -87,11 +104,8 @@ const HeroesAddForm = () => {
                     name="element"
                     value={heroElement}
                     onChange={(e) => setHeroElement(e.target.value)}>
-                    <option >Я владею элементом...</option>
-                    <option value="fire">Огонь</option>
-                    <option value="water">Вода</option>
-                    <option value="wind">Ветер</option>
-                    <option value="earth">Земля</option>
+                    <option value="">Я владею элементом...</option>
+                    {renderFiltersOptions(filters, filtersLoadingStatus)}
                 </select>
             </div>
 

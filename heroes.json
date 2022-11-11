@@ -1,17 +1,30 @@
 {
-  "heroes": [
-    {
-      "id": "8c8f44a3-2d7f-4256-9787-b53e1c5abe4d",
-      "name": "Olha",
-      "description": "Vse",
-      "element": "fire"
-    }
-  ],
+  "heroes": [],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "name": "all",
+      "label": "Все",
+      "className": "btn-dark"
+    },
+    {
+      "name": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "name": "water",
+      "label": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "name": "wind",
+      "label": "Ветер",
+      "className": "btn-success"
+    },
+    {
+      "name": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
+    }
   ]
 }
