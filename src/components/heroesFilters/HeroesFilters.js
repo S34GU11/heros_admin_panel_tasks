@@ -13,8 +13,6 @@ import classNames from "classnames";
 
 import { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged } from "../../actions";
 import Spinner from "../spinner/Spinner";
-import button from "bootstrap/js/src/button";
-
 
 const HeroesFilters = () => {
     const { filters, filtersLoadingStatus, activeFilter } = useSelector(state => state.filters)
