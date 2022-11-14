@@ -1,5 +1,12 @@
 {
-  "heroes": [],
+  "heroes": [
+    {
+      "id": "15c396cd-2023-438f-91da-9bb4b4c0665f",
+      "name": "Olha",
+      "description": "asd",
+      "element": "fire"
+    }
+  ],
   "filters": [
     {
       "name": "all",
