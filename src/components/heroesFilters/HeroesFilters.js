@@ -11,7 +11,8 @@ import { useSelector, useDispatch} from "react-redux";
 import {useHttp} from "../../hooks/http.hook";
 import classNames from "classnames";
 
-import { fetchFilters, activeFilterChanged } from "../../actions";
+import { fetchFilters } from "../../actions";
+import { activeFiltersChanged } from "./heroesFilterSlice";
 import Spinner from "../spinner/Spinner";
 
 const HeroesFilters = () => {
@@ -43,7 +44,7 @@ const HeroesFilters = () => {
               key={name}
               id={name}
               className={btnClass}
-              onClick={() => dispatch(activeFilterChanged(name))}
+              onClick={() => dispatch(activeFiltersChanged(name))}
             >{label}</button>
         })
     }
