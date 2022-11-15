@@ -19,34 +19,39 @@
       "element": "wind"
     },
     {
-      "id": "6fcb0817-a460-4c42-9793-da307c0a932c",
-      "name": "Olhaa",
-      "description": "asass",
+      "id": "71a21d19-d78c-4152-9dc4-9d494cf57f1a",
+      "name": "Serhii",
+      "description": "VSe",
       "element": "water"
     }
   ],
   "filters": [
     {
+      "id": "all",
       "name": "all",
       "label": "Все",
       "className": "btn-dark"
     },
     {
+      "id": "fire",
       "name": "fire",
       "label": "Огонь",
       "className": "btn-danger"
     },
     {
+      "id": "water",
       "name": "water",
       "label": "Вода",
       "className": "btn-primary"
     },
     {
+      "id": "wind",
       "name": "wind",
       "label": "Ветер",
       "className": "btn-success"
     },
     {
+      "id": "earth",
       "name": "earth",
       "label": "Земля",
       "className": "btn-secondary"
