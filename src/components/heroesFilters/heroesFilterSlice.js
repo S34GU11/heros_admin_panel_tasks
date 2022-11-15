@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {useHttp} from '../../hooks/http.hook';
 
 const initialState = {
     filters: [],
@@ -10,7 +11,9 @@ const filtersSlice = createSlice({
     name: 'filters',
     initialState,
     reducers: {
-        filtersFetching: state => {state.filtersLoadingStatus = 'loading'},
+        filtersFetching: state => {
+            state.filtersLoadingStatus = 'loading'
+        },
         filtersFetched: (state, action) => {
             state.filtersLoadingStatus = 'idle'
             state.filters = action.payload
@@ -21,7 +24,7 @@ const filtersSlice = createSlice({
         activeFiltersChanged: (state, action) => {
             state.activeFilter = action.payload
         }
-    }
+    },
 })
 
 const {actions, reducer} = filtersSlice

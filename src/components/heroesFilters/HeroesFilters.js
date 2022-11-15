@@ -1,4 +1,3 @@
-
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
 // Фильтры должны отображать только нужных героев при выборе
@@ -34,8 +33,8 @@ const HeroesFilters = () => {
     const renderFiltersBtn = arr => {
         if (arr.length === 0 ) return <h4 className="text-center mt-5">Not Found</h4>
 
-        //use classNames library
         return arr.map(({name, className, label}) => {
+            //use classNames library
             const btnClass = classNames('btn', className, {
                 'active' : name === activeFilter
             })
