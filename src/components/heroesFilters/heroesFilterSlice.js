@@ -35,6 +35,7 @@ const filtersSlice = createSlice({
            .addCase(fetchHeroesFilters.rejected, state => {
                state.filtersLoadingStatus = 'error'
            })
+           .addDefaultCase(() => {})
     }
 })
 
