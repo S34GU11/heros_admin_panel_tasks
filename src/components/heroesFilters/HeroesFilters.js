@@ -10,8 +10,7 @@ import { useSelector, useDispatch} from "react-redux";
 import {useHttp} from "../../hooks/http.hook";
 import classNames from "classnames";
 
-import { fetchFilters } from "../../actions";
-import { activeFiltersChanged } from "./heroesFilterSlice";
+import { activeFiltersChanged, fetchHeroesFilters } from "./heroesFilterSlice";
 import Spinner from "../spinner/Spinner";
 
 const HeroesFilters = () => {
@@ -20,7 +19,7 @@ const HeroesFilters = () => {
     const {request} = useHttp()
 
     useEffect(() => {
-        dispatch(fetchFilters(request))
+        dispatch(fetchHeroesFilters())
         // eslint-disable-next-line
     }, [])
 
