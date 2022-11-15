@@ -1,28 +1,16 @@
 {
   "heroes": [
     {
-      "id": "d768cf5e-bda7-44d9-96a4-5be2a000763b",
+      "id": "3ae2e18c-ff6a-4ba8-8033-de273e6984e8",
       "name": "Serhii",
-      "description": "All",
+      "description": "asdd",
       "element": "fire"
     },
     {
-      "id": "dbffeb8b-7575-4ce8-b969-8182c72da9e2",
+      "id": "4aad90b2-3834-4c68-817b-1ceb33ee4727",
       "name": "Serhii",
-      "description": "asas",
-      "element": "water"
-    },
-    {
-      "id": "39abf872-f9d3-4cde-b9b5-50454a62a6aa",
-      "name": "Vova",
-      "description": "asas",
-      "element": "wind"
-    },
-    {
-      "id": "71a21d19-d78c-4152-9dc4-9d494cf57f1a",
-      "name": "Serhii",
-      "description": "VSe",
-      "element": "water"
+      "description": "asdas",
+      "element": "fire"
     }
   ],
   "filters": [

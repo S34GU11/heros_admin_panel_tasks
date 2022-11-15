@@ -8,9 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import {useHttp} from '../../hooks/http.hook';
-import { heroDeleted, fetchHeroes, filteredHeroesSelector} from './heroesSlice';
+import { heroDeleted, fetchHeroes, filteredHeroesSelector } from './heroesSlice';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
+
+import './heroList.scss'
 
 const HeroesList = () => {
     const filteredHeroes = useSelector(filteredHeroesSelector)
@@ -44,7 +46,6 @@ const HeroesList = () => {
             return (
                <CSSTransition
                   timeout={0}
-                  nodeRef={nodeRef}
                   classNames="hero">
                    <h5 className="text-center mt-5">Героев пока нет</h5>
                </CSSTransition>
@@ -56,7 +57,6 @@ const HeroesList = () => {
                <CSSTransition
                  key={id}
                  timeout={500}
-                 nodeRef={nodeRef}
                  classNames="hero">
                   <HeroesListItem
                      {...props}
